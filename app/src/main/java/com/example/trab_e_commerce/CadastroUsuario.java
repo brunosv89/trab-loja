@@ -1,3 +1,4 @@
+
 package com.example.trab_e_commerce;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class CadastroUsuario extends AppCompatActivity implements View.OnClickListener {
+public class CadastroUsuario extends AppCompatActivity {
 
     TextView txtCadUsuario, txtCadSenha, txtConfSenha;
     Button btnCadastrar;
@@ -20,25 +21,26 @@ public class CadastroUsuario extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_cadastro_usuario);
 
         btnCadastrar = findViewById(R.id.btnCadastrar);
-        btnCadastrar.setOnClickListener(this);
+        setupButtons();
 
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btnCadastrar:
-                if (txtCadSenha.getText() == txtConfSenha.getText()) {
-                    //
-                    //salva usuário e senha no BD
-                    //
+    private void setupButtons() {
+        btnCadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (txtCadSenha.getText().equals(txtConfSenha.getText())) {
+                    System.out.println("sdsdfsdfsdfs");
                     Toast.makeText(getApplicationContext(), "Usuário cadastrado com sucesso", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(this, MainActivity.class);
-                    startActivity(intent);
+                    //Intent intent = new Intent(this, MainActivity.class);
+                    //startActivity(intent);
                 } else {
                     Toast.makeText(getApplicationContext(), "Senhas não conferem", Toast.LENGTH_LONG).show();
                 }
-                break;
-        }
+
+            }
+        });
     }
+
+
 }

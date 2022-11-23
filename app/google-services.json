@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1033427468660",
+    "project_id": "trabalho-ecommerce",
+    "storage_bucket": "trabalho-ecommerce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1033427468660:android:325671c8e0191df79b6c21",
+        "android_client_info": {
+          "package_name": "com.example.trab_e_commerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1033427468660-jus0qsieqj0cloc4pomebg26s831fh1u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBl7d26RFvFVzf4GBt17LiiIoZO9cSKo-A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1033427468660-jus0qsieqj0cloc4pomebg26s831fh1u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
