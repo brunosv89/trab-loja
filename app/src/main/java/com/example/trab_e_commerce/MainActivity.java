@@ -7,12 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.firebase.auth.FirebaseAuth;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button btnCadastro;
-    private FirebaseAuth mAuth;
+    //private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnCadastro = findViewById(R.id.btnCadastro);
         btnCadastro.setOnClickListener(this);
 
-        mAuth = FirebaseAuth.getInstance();
+        //mAuth = FirebaseAuth.getInstance();
 
     }
 
