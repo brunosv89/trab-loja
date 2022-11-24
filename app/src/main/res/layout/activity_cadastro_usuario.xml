@@ -23,7 +23,6 @@
             android:layout_gravity="center"
             android:src="@drawable/ic_baseline_account_box_24"
             />
-        />
 
         <TextView
             android:layout_width="wrap_content"
@@ -37,34 +36,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <EditText
             android:id="@+id/txtCadUsuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Usuário"
+            android:layout_marginTop="10dp"
             android:width="200dp"
             android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:textColor="#555"/>
+            android:hint="Email"
+            android:minHeight="48dp"
+            android:textColor="#555"
+            android:inputType="textEmailAddress"/>
+
         <EditText
             android:id="@+id/txtCadSenha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Senha"
+            android:layout_marginTop="10dp"
             android:width="200dp"
             android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:textColor="#555"/>
+            android:hint="Senha"
+            android:minHeight="48dp"
+            android:textColor="#555"
+            android:inputType="textPassword"/>
 
         <EditText
             android:id="@+id/txtConfSenha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Confirma Senha"
+            android:layout_marginTop="10dp"
             android:width="200dp"
             android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:textColor="#555"/>
+            android:hint="Confirma Senha"
+            android:minHeight="48dp"
+            android:textColor="#555"
+            android:inputType="textPassword"/>
 
         <Button
             android:id="@+id/btnCadastrar"

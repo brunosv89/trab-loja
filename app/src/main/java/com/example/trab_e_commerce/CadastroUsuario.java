@@ -29,7 +29,6 @@ public class CadastroUsuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_usuario);
 
-        btnCadastrar = findViewById(R.id.btnCadastrar);
         setupWidgets();
         setupButtons();
 
@@ -37,6 +36,7 @@ public class CadastroUsuario extends AppCompatActivity {
     }
 
     private void setupWidgets() {
+        btnCadastrar = findViewById(R.id.btnCadastrar);
         txtCadSenha = findViewById(R.id.txtCadSenha);
         txtConfSenha = findViewById(R.id.txtConfSenha);
         txtCadUsuario = findViewById(R.id.txtCadUsuario);
@@ -45,12 +45,10 @@ public class CadastroUsuario extends AppCompatActivity {
 
     private void setupButtons() {
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 if (txtCadSenha.getText().toString().equals(txtConfSenha.getText().toString())) {
-                    login(txtCadUsuario.getText().toString(), txtCadSenha.getText().toString());
-                    Toast.makeText(getApplicationContext(), "Usuário cadastrado com sucesso", Toast.LENGTH_LONG).show();
+                    register(txtCadUsuario.getText().toString(), txtCadSenha.getText().toString());
                 } else {
                     Toast.makeText(getApplicationContext(), "Senhas não conferem", Toast.LENGTH_LONG).show();
                 }
@@ -60,32 +58,34 @@ public class CadastroUsuario extends AppCompatActivity {
     }
 
 
-    private void login(String email, String senha){
-        if (!email.isEmpty()) {
-            mAuth.createUserWithEmailAndPassword(email, senha)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
-                                FirebaseUser user = mAuth.getCurrentUser();
-                                Toast.makeText(getApplicationContext(), "Cadastro realizado com sucesso",
-                                        Toast.LENGTH_SHORT).show();
-                                //Intent intent = new Intent(CadastroUsuario.this, MainActivity.class);
-                                //startActivity(intent);
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Toast.makeText(getApplicationContext(), "Cadastro falhou.",
-                                        Toast.LENGTH_SHORT).show();
+    private void register(String email, String senha){
 
-                            }
-                        }
-                    });
+        if(senha.isEmpty() || senha.length() < 6){
+            Toast.makeText(getApplicationContext(), "É necessário informar uma senha válida com 6 caracteres",
+                    Toast.LENGTH_SHORT).show();
+        }
+        else if (!email.isEmpty()) {
+            mAuth.createUserWithEmailAndPassword(email, senha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if(task.isSuccessful()){
+                        Toast.makeText(getApplicationContext(), "Cadastro realizado com sucesso",
+                                Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(CadastroUsuario.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(), "Cadastro falhou." + task.getException().getMessage(),
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
         } else {
             Toast.makeText(getApplicationContext(), "É necessário informar e-mail válido.",
                     Toast.LENGTH_SHORT).show();
         }
     }
+
 
 
 }
