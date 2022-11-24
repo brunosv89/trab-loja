@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:choiceMode="singleChoice"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="2dp"
+        >
+
+        <TextView
+            android:id="@+id/produtoNome"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="Produto"
+            android:layout_weight="4"/>
+        <TextView
+            android:id="@+id/produtoEstoque"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="Estoque"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/produtoValor"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="Valor"
+            android:layout_weight="2"/>
+    </LinearLayout>
+
+
+</LinearLayout>

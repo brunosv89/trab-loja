@@ -3,15 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Faculdade/trab-loja/trab-loja/app/src/main/res/layout/activity_cadastro_usuario.xml" value="0.19157608695652173" />
-        <entry key="..\:/Faculdade/trab-loja/trab-loja/app/src/main/res/layout/activity_lista_produto.xml" value="0.259375" />
-        <entry key="..\:/Faculdade/trab-loja/trab-loja/app/src/main/res/layout/activity_main.xml" value="0.19157608695652173" />
         <entry key="..\:/Users/bruno.vasques/AndroidStudioProjects/trabecommerce/app/src/main/res/drawable/ic_baseline_account_box_24.xml" value="0.2295" />
+        <entry key="..\:/Users/bruno.vasques/AndroidStudioProjects/trabecommerce/app/src/main/res/drawable/ic_baseline_shopping_bag_24.xml" value="0.2525" />
         <entry key="..\:/Users/bruno.vasques/AndroidStudioProjects/trabecommerce/app/src/main/res/drawable/ic_baseline_shopping_cart_24.xml" value="0.2295" />
         <entry key="..\:/Users/bruno.vasques/AndroidStudioProjects/trabecommerce/app/src/main/res/layout/activity_cadastro_usuario.xml" value="0.3677536231884058" />
+        <entry key="..\:/Users/bruno.vasques/AndroidStudioProjects/trabecommerce/app/src/main/res/layout/activity_compra.xml" value="0.35833333333333334" />
         <entry key="..\:/Users/bruno.vasques/AndroidStudioProjects/trabecommerce/app/src/main/res/layout/activity_main.xml" value="0.3723958333333333" />
         <entry key="..\:/Users/bruno.vasques/AndroidStudioProjects/trabecommerce/app/src/main/res/layout/cadastro.xml" value="0.2773224043715847" />
         <entry key="..\:/Users/bruno.vasques/AndroidStudioProjects/trabecommerce/app/src/main/res/layout/cadastro_usuario.xml" value="0.3677536231884058" />
+        <entry key="..\:/Users/bruno.vasques/AndroidStudioProjects/trabecommerce/app/src/main/res/layout/produto.xml" value="0.3723958333333333" />
       </map>
     </option>
   </component>
