@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 public class FinalizarCompra extends AppCompatActivity {
 
-    Button btnFinalizar;
     TextView txtNomeProduto, txtValorProduto;
 
     @Override
@@ -19,30 +18,21 @@ public class FinalizarCompra extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finalizar_compra);
 
-
-        btnFinalizar.findViewById(R.id.btnFinalizar);
         setupWidgets();
         setupButtons();
-
     }
 
     private void setupWidgets() {
-        txtNomeProduto.findViewById(R.id.nomeProduto);
-        txtValorProduto.findViewById(R.id.valorProduto);
+        txtNomeProduto = findViewById(R.id.nomeProduto);
+        txtValorProduto = findViewById(R.id.valorProduto);
         Intent intent = getIntent();
-        //String nome = intent.getStringExtra("nome");
-        //Float valor = intent.getFloatExtra("valor");
-        //txtValorProduto = nome;
-        //txtValorProduto = valor;
+        String nome = intent.getStringExtra("nome");
+        String valor = intent.getStringExtra("valor");
+        txtNomeProduto.setText(nome);
+        txtValorProduto.setText(valor);
     }
 
     private void setupButtons() {
-        btnFinalizar.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                // decrementar uma quantidade do estoque do produto no BD
-            }
-        });
+        // faz requisição para diminuir 1 no estoque do produto
     }
 }

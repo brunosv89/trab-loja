@@ -4,33 +4,31 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.SimpleTimeZone;
 
-public class Compra extends AppCompatActivity {
+public class Estoque extends AppCompatActivity {
 
     String [] de = {"produto", "estoque", "valor"};
     int [] para = {R.id.produtoNome, R.id.produtoEstoque, R.id.produtoValor};
-    ListView listaProdutos;
-    Button btnComprar;
-
+    ListView listaEstoque;
+    TextView txtTotalVendas;
+    Button btnNovoProduto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_compra);
+        setContentView(R.layout.activity_estoque);
 
         loadList();
+        setupWidgets();
         setupButtons();
     }
 
@@ -39,7 +37,7 @@ public class Compra extends AppCompatActivity {
         int [] estoque = {14, 22, 8};
         String [] valor = {"R$ 120,00", "R$ 53,50", "R$199,00"};
 
-        listaProdutos = findViewById(R.id.listaProdutos);
+        listaEstoque = findViewById(R.id.listaEstoque);
         List<Map<String, Object>> lista = new ArrayList<>();
 
         for (int i=0; i < produto.length; i++) {
@@ -51,19 +49,17 @@ public class Compra extends AppCompatActivity {
         }
 
         SimpleAdapter adapter = new SimpleAdapter(this, lista, R.layout.produto, de, para);
-        listaProdutos.setAdapter(adapter);
+        listaEstoque.setAdapter(adapter);
     }
 
-
+    private void setupWidgets() {
+        txtTotalVendas = findViewById(R.id.totalVendas);
+    }
 
     private void setupButtons() {
-
-        btnComprar = findViewById(R.id.btnComp);
-
-        btnComprar.setOnClickListener(view -> {
-            Intent intent = new Intent(Compra.this, FinalizarCompra.class);
-            intent.putExtra("nome", "Teclado Hello Kit");
-            intent.putExtra("valor", "R$ 39.90");
+        btnNovoProduto = findViewById(R.id.btnNovoProduto);
+        btnNovoProduto.setOnClickListener(view -> {
+            Intent intent = new Intent(Estoque.this, CadastroProduto.class);
             startActivity(intent);
         });
     }

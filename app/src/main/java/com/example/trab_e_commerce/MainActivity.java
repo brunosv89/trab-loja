@@ -70,8 +70,16 @@ public class MainActivity extends AppCompatActivity  {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 FirebaseUser user = mAuth.getCurrentUser();
-                                Toast.makeText(MainActivity.this, "Login realizado com sucesso",
-                                        Toast.LENGTH_SHORT).show();
+                                String userType = "other";
+                                if (userType == "admin") {
+                                    Intent intent1 = new Intent(MainActivity.this, Compra.class);
+                                    startActivity(intent1);
+                                } else {
+                                    Intent intent2 = new Intent(MainActivity.this, Estoque.class);
+                                    startActivity(intent2);
+                                }
+
+
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Toast.makeText(MainActivity.this, "Dados incorretos",
