@@ -2,8 +2,11 @@ package com.example.trab_e_commerce;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -18,13 +21,13 @@ public class Compra extends AppCompatActivity {
     String [] de = {"produto", "estoque", "valor"};
     int [] para = {R.id.produtoNome, R.id.produtoEstoque, R.id.produtoValor};
     ListView listaProdutos;
+    Button btnComprar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compra);
-
-
 
         String [] produto = {"Teclado", "Mouse", "Headset"};
         int [] estoque = {14, 22, 8};
@@ -43,5 +46,30 @@ public class Compra extends AppCompatActivity {
 
         SimpleAdapter adapter = new SimpleAdapter(this, lista, R.layout.produto, de, para);
         listaProdutos.setAdapter(adapter);
+
+        btnComprar.findViewById(R.id.btnComp);
+        //setupWidgets();
+        //setupButtons();
+    }
+
+    private void setupWidgets() {
+
+    }
+
+    private void setupButtons() {
+        btnComprar.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                //Intent intent = new Intent(Compra.this, FinalizarCompra.class);
+
+                // Como pegar o valor do item selecionado?
+                //intent.putExtra("nome", );
+                //intent.putExtra("valor", );
+
+                //startActivity(intent);
+            }
+        });
     }
 }

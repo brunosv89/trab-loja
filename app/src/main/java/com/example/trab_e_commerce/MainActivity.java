@@ -20,13 +20,13 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity  {
 
+
     Button btnCadastro;
     Button btnLogin;
     EditText txtEmail;
     EditText txtSenha;
 
     private FirebaseAuth mAuth;
-
 
 
     @Override
@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity  {
         btnLogin.setOnClickListener(view -> login());
 
     }
+
 
     private void login() {
         String email = txtEmail.getText().toString();
