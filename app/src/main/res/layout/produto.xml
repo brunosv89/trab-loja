@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:choiceMode="singleChoice"
+        android:focusableInTouchMode="true"
         android:paddingHorizontal="5dp"
         android:paddingVertical="2dp"
         >

@@ -6,10 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnCadastro;
+    Button btnCadastro, btnLogin;
     //private FirebaseAuth mAuth;
 
     @Override
@@ -18,7 +19,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         btnCadastro = findViewById(R.id.btnCadastro);
+        btnLogin = findViewById(R.id.btnLogin);
         btnCadastro.setOnClickListener(this);
+        btnLogin.setOnClickListener(this);
 
         //mAuth = FirebaseAuth.getInstance();
 
@@ -28,10 +31,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnCadastro:
-                Intent intent = new Intent(this, CadastroUsuario.class);
-                startActivity(intent);
+                Intent intent1 = new Intent(this, CadastroUsuario.class);
+                startActivity(intent1);
                 break;
-            //case R.id.btnLogin:
+            case R.id.btnLogin:
+                Toast.makeText(getApplicationContext(), "teste", Toast.LENGTH_LONG).show();
+                Intent intent2 = new Intent(this, Compra.class);
+                startActivity(intent2);
+                break;
         }
     }
 }
