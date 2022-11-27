@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -23,6 +24,8 @@ public class Compra extends AppCompatActivity {
     int [] para = {R.id.produtoNome, R.id.produtoEstoque, R.id.produtoValor};
     ListView listaProdutos;
     Button btnComprar;
+    List<Map<String, Object>> lista;
+
 
 
     @Override
@@ -40,7 +43,7 @@ public class Compra extends AppCompatActivity {
         String [] valor = {"R$ 120,00", "R$ 53,50", "R$199,00"};
 
         listaProdutos = findViewById(R.id.listaProdutos);
-        List<Map<String, Object>> lista = new ArrayList<>();
+        lista = new ArrayList<>();
 
         for (int i=0; i < produto.length; i++) {
             Map<String, Object> mapa = new HashMap<>();
@@ -52,8 +55,17 @@ public class Compra extends AppCompatActivity {
 
         SimpleAdapter adapter = new SimpleAdapter(this, lista, R.layout.produto, de, para);
         listaProdutos.setAdapter(adapter);
-    }
 
+        listaProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Map<String, Object> selecao = lista.get(i);
+                String nomeDoProduto = selecao.get("produto").toString();
+                String valorDoProduto = selecao.get("valor").toString();
+                Toast.makeText(Compra.this, nomeDoProduto + valorDoProduto, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 
 
     private void setupButtons() {
