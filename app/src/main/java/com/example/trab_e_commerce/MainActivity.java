@@ -63,6 +63,8 @@ public class MainActivity extends AppCompatActivity  {
         String email = txtEmail.getText().toString();
         String senha = txtSenha.getText().toString();
 
+        String x = ApiCall.get("https://us-central1-trabalho-ecommerce.cloudfunctions.net/api/getUser",getApplicationContext());
+//        System.out.println("aaaaaa:" + x);
         if(!(senha.isEmpty() || email.isEmpty())){
             mAuth.signInWithEmailAndPassword(email, senha)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
