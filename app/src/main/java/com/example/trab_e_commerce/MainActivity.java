@@ -70,12 +70,12 @@ public class MainActivity extends AppCompatActivity  {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 FirebaseUser user = mAuth.getCurrentUser();
-                                String userType = "other";
+                                String userType = "admin";
                                 if (userType == "admin") {
-                                    Intent intent1 = new Intent(MainActivity.this, Compra.class);
+                                    Intent intent1 = new Intent(MainActivity.this, Estoque.class);
                                     startActivity(intent1);
                                 } else {
-                                    Intent intent2 = new Intent(MainActivity.this, Estoque.class);
+                                    Intent intent2 = new Intent(MainActivity.this, Compra.class);
                                     startActivity(intent2);
                                 }
 

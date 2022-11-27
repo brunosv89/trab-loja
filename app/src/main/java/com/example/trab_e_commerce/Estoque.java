@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,6 +53,16 @@ public class Estoque extends AppCompatActivity {
 
         SimpleAdapter adapter = new SimpleAdapter(this, lista, R.layout.produto, de, para);
         listaEstoque.setAdapter(adapter);
+
+        listaEstoque.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Map<String, Object> selecao = lista.get(i);
+                String nomeDoProduto = selecao.get("produto").toString();
+                String valorDoProduto = selecao.get("valor").toString();
+                Toast.makeText(Estoque.this, nomeDoProduto + valorDoProduto, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void setupWidgets() {
