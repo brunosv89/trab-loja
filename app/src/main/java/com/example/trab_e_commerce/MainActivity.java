@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity  {
         setUpButtons();
 
         stopThread();
-        returnThread();
 
 
 
@@ -131,14 +130,4 @@ public class MainActivity extends AppCompatActivity  {
         }
     }
 
-    public static void stopThread(){
-        if (Thread.currentThread().isAlive()) {
-            Thread.currentThread().interrupt();
-        }
-    }
-    public static void returnThread(){
-        if (Thread.currentThread().isInterrupted()) {
-            Thread.currentThread().run();
-        }
-    }
 }
