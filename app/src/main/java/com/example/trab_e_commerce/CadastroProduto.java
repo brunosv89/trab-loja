@@ -6,6 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class CadastroProduto extends AppCompatActivity {
 
@@ -33,9 +37,27 @@ public class CadastroProduto extends AppCompatActivity {
     private void setupButtons() {
         btnAdd = findViewById(R.id.btnNovoProduto);
         btnAdd.setOnClickListener(view -> {
-            //
-            //fazer a requisição para gravar novo produto no estoque
-            //
+            String nome = this.nome.getText().toString();
+            String qtd = this.quantidade.getText().toString();
+            String preco = this.valor.getText().toString();
+
+            JSONObject jsonBody = new JSONObject();
+            try {
+                jsonBody.put("name", nome);
+                jsonBody.put("stock", qtd);
+                jsonBody.put("price", preco);
+                jsonBody.put("image_url", "https://static.vecteezy.com/ti/vetor-gratis/p3/3589716-icone-da-caixa-de-leite-vetor.jpg");
+                String URL = "https://us-central1-trabalho-ecommerce.cloudfunctions.net/api/createProduct";
+                String result = ApiCall.post(URL,jsonBody,getApplicationContext());
+
+                Toast.makeText(getApplicationContext(), "Produto cadastrado com sucesso",
+                        Toast.LENGTH_SHORT).show();
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "Erro de API",
+                        Toast.LENGTH_SHORT).show();
+            }
+
             Intent intent = new Intent(CadastroProduto.this, Estoque.class);
             startActivity(intent);
         });

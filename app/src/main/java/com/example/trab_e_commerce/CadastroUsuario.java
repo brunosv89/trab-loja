@@ -92,8 +92,6 @@ public class CadastroUsuario extends AppCompatActivity {
                             jsonBody.put("email", email);
                             String URL = "https://us-central1-trabalho-ecommerce.cloudfunctions.net/api/createUser";
                             String result = ApiCall.post(URL,jsonBody,getApplicationContext());
-                            System.out.println(result);
-                            operationSucceeded = true;
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

@@ -161,9 +161,7 @@ public class ApiCall {
                 return;
             }
 
-//            Toast.makeText(activity, s, Toast.LENGTH_SHORT).show();
-//            activity.progressBar.setProgress(0);
-//            activity.progressBar.setVisibility(View.INVISIBLE);
+
         }
     }
 }
