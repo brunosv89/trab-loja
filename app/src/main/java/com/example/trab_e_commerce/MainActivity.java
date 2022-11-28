@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity  {
                                             public void onSuccess(DocumentSnapshot documentSnapshot) {
                                                 if (documentSnapshot.exists()) {
                                                     String userType = documentSnapshot.getString("user_type");
-                                                    if (userType == "admin") {
+                                                    if (!userType.equals("admin")) {
                                                         Intent intent1 = new Intent(MainActivity.this, Compra.class);
                                                         startActivity(intent1);
                                                     } else {
