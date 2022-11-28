@@ -66,6 +66,9 @@ public class Compra extends AppCompatActivity {
             intent.putExtra("valor", "R$ 39.90");
             startActivity(intent);
         });
+
+
+
     }
 
 
@@ -95,6 +98,7 @@ public class Compra extends AppCompatActivity {
 
                 return new ViewHolder(view);
             }
+
         };
         recyclerView.setAdapter(adapter);
 
@@ -122,6 +126,16 @@ public class Compra extends AppCompatActivity {
             name = itemView.findViewById(R.id.produtoNome);
             price = itemView.findViewById(R.id.produtoValor);
             stock = itemView.findViewById(R.id.produtoEstoque);
+
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String nomeDoProduto = name.getText().toString();
+                    String valorDoProduto = price.getText().toString();
+                    Toast.makeText(Compra.this, nomeDoProduto + valorDoProduto, Toast.LENGTH_LONG).show();
+                }
+            });
         }
 
         public void bind(Produto produto){
@@ -129,6 +143,7 @@ public class Compra extends AppCompatActivity {
             price.setText("R$: " + produto.getPrice());
             stock.setText(produto.getStock());
         }
+
 
     }
 
