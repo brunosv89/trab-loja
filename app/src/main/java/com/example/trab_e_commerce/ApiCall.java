@@ -32,7 +32,6 @@ public class ApiCall {
         RequestFuture<JSONObject> future = RequestFuture.newFuture();
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         final String[] result = {""};
-        MainActivity.stopThread();
         JsonObjectRequest objectRequest =  new JsonObjectRequest(
                 Request.Method.GET,
                 url,
@@ -41,7 +40,6 @@ public class ApiCall {
                     @Override
                     public void onResponse(JSONObject response) {
                         result[0] = response.toString();
-                        MainActivity.returnThread();
                     }
 
                 },
@@ -49,7 +47,6 @@ public class ApiCall {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         System.out.println("ERROR: " + error );
-                        MainActivity.returnThread();
                     }
                 }
 
