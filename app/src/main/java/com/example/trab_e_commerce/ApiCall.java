@@ -1,8 +1,10 @@
 package com.example.trab_e_commerce;
 
-import android.app.VoiceInteractor;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
@@ -17,19 +19,20 @@ import com.android.volley.toolbox.RequestFuture;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.lang.ref.WeakReference;
 
 public class ApiCall {
 
 
-    public static String get(String url, Context context){
+    public static String[] get(String url, Context context){
 
         RequestFuture<JSONObject> future = RequestFuture.newFuture();
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         final String[] result = {""};
+        MainActivity.stopThread();
         JsonObjectRequest objectRequest =  new JsonObjectRequest(
                 Request.Method.GET,
                 url,
@@ -38,6 +41,7 @@ public class ApiCall {
                     @Override
                     public void onResponse(JSONObject response) {
                         result[0] = response.toString();
+                        MainActivity.returnThread();
                     }
 
                 },
@@ -45,6 +49,7 @@ public class ApiCall {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         System.out.println("ERROR: " + error );
+                        MainActivity.returnThread();
                     }
                 }
 
@@ -52,12 +57,13 @@ public class ApiCall {
         requestQueue.add(objectRequest);
 //        Request response = requestQueue.start();
 
-        return result[0];
+        return result;
 
 
     }
 
-    public static String post(String url, JSONObject body, Context context){
+    @NonNull
+    public static String post(String url, @NonNull JSONObject body, Context context){
         RequestQueue requestQueue = Volley.newRequestQueue(context);
 
         final String requestBody = body.toString();
@@ -101,4 +107,73 @@ public class ApiCall {
         requestQueue.add(stringRequest);
         return stringRequest.toString();
     }
+
+
+
+    private static class ExampleAsyncTask extends AsyncTask<Integer, Integer, String> {
+        private WeakReference<MainActivity> activityWeakReference;
+
+        ExampleAsyncTask(MainActivity activity) {
+            activityWeakReference = new WeakReference<MainActivity>(activity);
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            MainActivity activity = activityWeakReference.get();
+            if (activity == null || activity.isFinishing()) {
+                return;
+            }
+
+//            activity.progressBar.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected String doInBackground(Integer... integers) {
+            for (int i = 0; i < integers[0]; i++) {
+                publishProgress((i * 100) / integers[0]);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            return "Finished!";
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+
+            MainActivity activity = activityWeakReference.get();
+            if (activity == null || activity.isFinishing()) {
+                return;
+            }
+
+//            activity.progressBar.setProgress(values[0]);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            MainActivity activity = activityWeakReference.get();
+            if (activity == null || activity.isFinishing()) {
+                return;
+            }
+
+//            Toast.makeText(activity, s, Toast.LENGTH_SHORT).show();
+//            activity.progressBar.setProgress(0);
+//            activity.progressBar.setVisibility(View.INVISIBLE);
+        }
+    }
 }
+
+
+
+
+
+
+

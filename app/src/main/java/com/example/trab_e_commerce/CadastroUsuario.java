@@ -35,6 +35,8 @@ public class CadastroUsuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_usuario);
 
+
+
         setupWidgets();
         setupButtons();
 
@@ -113,7 +115,6 @@ public class CadastroUsuario extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         }
     }
-
 
 
 }
