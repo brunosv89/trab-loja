@@ -12,11 +12,16 @@ import android.widget.Toast;
 
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity  {
 
@@ -27,7 +32,7 @@ public class MainActivity extends AppCompatActivity  {
     EditText txtSenha;
 
     private FirebaseAuth mAuth;
-
+    private  FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,10 @@ public class MainActivity extends AppCompatActivity  {
         logoutAnyUser();
 
         setUpButtons();
+
+        stopThread();
+
+
 
     }
 
@@ -63,6 +72,8 @@ public class MainActivity extends AppCompatActivity  {
         String email = txtEmail.getText().toString();
         String senha = txtSenha.getText().toString();
 
+
+
         if(!(senha.isEmpty() || email.isEmpty())){
             mAuth.signInWithEmailAndPassword(email, senha)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -70,14 +81,31 @@ public class MainActivity extends AppCompatActivity  {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 FirebaseUser user = mAuth.getCurrentUser();
-                                String userType = "admin";
-                                if (userType == "admin") {
-                                    Intent intent1 = new Intent(MainActivity.this, Estoque.class);
-                                    startActivity(intent1);
-                                } else {
-                                    Intent intent2 = new Intent(MainActivity.this, Compra.class);
-                                    startActivity(intent2);
-                                }
+                                DocumentReference userData = db.collection("user").document(user.getUid());
+
+                                userData.get()
+                                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                            @Override
+                                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                if (documentSnapshot.exists()) {
+                                                    String userType = documentSnapshot.getString("user_type");
+                                                    if (userType == "admin") {
+                                                        Intent intent1 = new Intent(MainActivity.this, Compra.class);
+                                                        startActivity(intent1);
+                                                    } else {
+                                                        Intent intent2 = new Intent(MainActivity.this, Estoque.class);
+                                                        startActivity(intent2);
+                                                    }
+                                                }
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Toast.makeText(MainActivity.this, "Erro de API", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+
 
 
                             } else {
@@ -100,6 +128,5 @@ public class MainActivity extends AppCompatActivity  {
             mAuth.signOut();
         }
     }
-
 
 }
