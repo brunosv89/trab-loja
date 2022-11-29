@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -6,46 +7,54 @@
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
     android:layout_marginTop="8dp"
-    app:cardBackgroundColor="#FFFFE8">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="8dp">
-
-        <TextView
-            android:id="@+id/produtoNome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@id/produtoEstoque"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="Produto"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            />
-
-        <TextView
-            android:id="@+id/produtoEstoque"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_alignParentStart="false"
-            android:layout_toStartOf="@id/produtoValor"
-            android:text="Estoque"
-            android:textSize="20dp"
-            android:layout_marginRight="30dp"
-            />
-
-        <TextView
-            android:id="@+id/produtoValor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:text="Valor" />
-    </RelativeLayout>
+    app:cardBackgroundColor="#FFFFEF">
 
 
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:choiceMode="singleChoice"
+    android:focusableInTouchMode="true"
+    android:orientation="horizontal"
+    android:paddingHorizontal="5dp"
+    android:paddingVertical="2dp">
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:minHeight="40dp"
+        android:minWidth="40dp"
+        android:src="@drawable/ic_baseline_image_24"
+        />
+
+    <TextView
+        android:id="@+id/produtoNome"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_weight="4"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:text="Produto" />
+
+    <TextView
+        android:id="@+id/produtoEstoque"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Estoque" />
+
+    <TextView
+        android:id="@+id/produtoValor"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:text="Valor" />
+
+
+</LinearLayout>
 
 </androidx.cardview.widget.CardView>

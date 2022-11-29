@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Faculdade/Ecommerce/trab-loja/app/src/main/res/layout/activity_compra.xml" value="0.259375" />
+        <entry key="..\:/Faculdade/Ecommerce/trab-loja/app/src/main/res/layout/activity_estoque.xml" value="0.259375" />
+        <entry key="..\:/Faculdade/Ecommerce/trab-loja/app/src/main/res/layout/produto.xml" value="0.259375" />
         <entry key="..\:/Users/bruno.vasques/AndroidStudioProjects/trabecommerce/app/src/main/res/drawable/card.xml" value="0.2525" />
         <entry key="..\:/Users/bruno.vasques/AndroidStudioProjects/trabecommerce/app/src/main/res/drawable/ic_baseline_account_box_24.xml" value="0.2295" />
         <entry key="..\:/Users/bruno.vasques/AndroidStudioProjects/trabecommerce/app/src/main/res/drawable/ic_baseline_edit_note_24.xml" value="0.2525" />
