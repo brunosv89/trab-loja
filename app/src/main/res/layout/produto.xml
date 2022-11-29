@@ -8,10 +8,19 @@
     android:paddingHorizontal="5dp"
     android:paddingVertical="2dp">
 
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="60dp"
+        android:minWidth="60dp"
+        android:src="@drawable/ic_baseline_image_24"
+    />
+
     <TextView
         android:id="@+id/produtoNome"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:layout_weight="4"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
@@ -20,7 +29,7 @@
     <TextView
         android:id="@+id/produtoEstoque"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:layout_weight="1"
         android:gravity="center"
         android:text="Estoque" />
@@ -28,8 +37,8 @@
     <TextView
         android:id="@+id/produtoValor"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_weight="2"
+        android:layout_height="60dp"
+        android:layout_weight="3"
         android:gravity="center"
         android:text="Valor" />
 
