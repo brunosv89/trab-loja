@@ -130,7 +130,6 @@ public class CadastroUsuario extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.itemHome:
                 Intent homePage = new Intent(CadastroUsuario.this, MainActivity.class);
-                startActivity(homePage);
                 finish();
                 return true;
         }

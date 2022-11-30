@@ -173,7 +173,6 @@ public class Compra extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.itemHome:
                 Intent homePage = new Intent(Compra.this, MainActivity.class);
-                startActivity(homePage);
                 finish();
                 return true;
         }
