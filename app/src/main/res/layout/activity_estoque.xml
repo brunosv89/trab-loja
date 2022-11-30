@@ -7,7 +7,7 @@
     tools:context=".Estoque"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#AED6F1">
+    android:background="@drawable/page_gradient">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -107,8 +107,9 @@
             android:textSize="18dp"
             android:width="320dp"
             android:layout_marginTop="15dp"
-            android:backgroundTint="#D2B4DE"
-            android:layout_gravity="center" />
+            android:backgroundTint="#B9C1D3"
+            android:layout_gravity="center"
+            />
 
 
 

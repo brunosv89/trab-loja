@@ -7,7 +7,7 @@
     tools:context=".CadastroUsuario"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#AED6F1">
+    android:background="@drawable/page_gradient">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -92,7 +92,7 @@
             android:text="Cadastrar"
             android:width="150dp"
             android:layout_marginTop="35dp"
-            android:backgroundTint="#D2B4DE"
+            android:backgroundTint="#B9C1D3"
             android:layout_gravity="center"
             />
     </LinearLayout>
