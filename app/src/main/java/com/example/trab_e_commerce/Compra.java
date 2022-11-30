@@ -42,7 +42,6 @@ public class Compra extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compra);
 
-//        loadList();
         setUp();
         loadProductList();
     }
@@ -115,6 +114,9 @@ public class Compra extends AppCompatActivity {
         TextView price;
         TextView stock;
         ImageView image;
+        String id;
+        String imageurl;
+
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
@@ -128,7 +130,16 @@ public class Compra extends AppCompatActivity {
                 public void onClick(View view) {
                     String nomeDoProduto = name.getText().toString();
                     String valorDoProduto = price.getText().toString();
-                    Toast.makeText(Compra.this, nomeDoProduto + valorDoProduto, Toast.LENGTH_LONG).show();
+
+                    Intent intent = new Intent(Compra.this, FinalizarCompra.class);
+                    intent.putExtra("nome", nomeDoProduto);
+                    intent.putExtra("valor", valorDoProduto);
+                    intent.putExtra("id", id);
+                    intent.putExtra("urlImage",imageurl);
+
+                    startActivity(intent);
+
+                    Toast.makeText(Compra.this, nomeDoProduto + ": " + valorDoProduto, Toast.LENGTH_LONG).show();
                 }
             });
         }
@@ -137,16 +148,15 @@ public class Compra extends AppCompatActivity {
             name.setText(produto.getName());
             price.setText("R$: " + produto.getPrice());
             stock.setText(produto.getStock());
+            id = produto.getId();
 
             //image config
-            String imageurl = produto.getImage_url();
+            imageurl = produto.getImage_url();
             System.out.println(imageurl);
 
             new DownloadImageTask((ImageView) image)
                     .execute(imageurl);
-
         }
-
 
     }
 

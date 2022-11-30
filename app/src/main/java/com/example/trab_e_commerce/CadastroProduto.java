@@ -53,6 +53,7 @@ public class CadastroProduto extends AppCompatActivity {
                 jsonBody.put("image_url", img_url);
                 String URL = "https://us-central1-trabalho-ecommerce.cloudfunctions.net/api/createProduct";
                 String result = ApiCall.post(URL,jsonBody,getApplicationContext());
+                Thread.sleep(200);
 
                 Toast.makeText(getApplicationContext(), "Produto cadastrado com sucesso",
                         Toast.LENGTH_SHORT).show();
@@ -60,6 +61,8 @@ public class CadastroProduto extends AppCompatActivity {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "Erro de API",
                         Toast.LENGTH_SHORT).show();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
 
             Intent intent = new Intent(CadastroProduto.this, Estoque.class);
