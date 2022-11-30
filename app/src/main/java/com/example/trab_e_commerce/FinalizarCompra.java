@@ -25,6 +25,7 @@ public class FinalizarCompra extends AppCompatActivity {
     Button compraButton;
     ImageView productImage;
     String productId;
+    String valor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,9 +42,10 @@ public class FinalizarCompra extends AppCompatActivity {
         productImage = findViewById(R.id.finalImage);
         Intent intent = getIntent();
         String nome = intent.getStringExtra("nome");
-        String valor = intent.getStringExtra("valor");
         String url = intent.getStringExtra("urlImage");
+        valor = intent.getStringExtra("valor");
         productId = intent.getStringExtra("id");
+
         txtNomeProduto.setText(nome);
         txtValorProduto.setText(valor);
 
@@ -68,6 +70,9 @@ public class FinalizarCompra extends AppCompatActivity {
                 try {
                     jsonBody.put("id", productId);
                     jsonBody.put("subtractValue", quantity);
+                    System.out.println(valor);
+                    jsonBody.put("price", valor);
+
                     String URL = "https://us-central1-trabalho-ecommerce.cloudfunctions.net/api/productSold";
                     String result = ApiCall.post(URL,jsonBody,getApplicationContext());
 

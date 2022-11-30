@@ -110,49 +110,49 @@ public class Compra extends AppCompatActivity {
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        TextView name;
-        TextView price;
-        TextView stock;
+        TextView nameTxt;
+        TextView priceTxt;
+        TextView stockTxt;
         ImageView image;
         String id;
         String imageurl;
+        String price;
 
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
-            name = itemView.findViewById(R.id.produtoNome);
-            price = itemView.findViewById(R.id.produtoValor);
-            stock = itemView.findViewById(R.id.produtoEstoque);
+            nameTxt = itemView.findViewById(R.id.produtoNome);
+            priceTxt = itemView.findViewById(R.id.produtoValor);
+            stockTxt = itemView.findViewById(R.id.produtoEstoque);
             image = itemView.findViewById(R.id.img);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String nomeDoProduto = name.getText().toString();
-                    String valorDoProduto = price.getText().toString();
+                    String nomeDoProduto = nameTxt.getText().toString();
 
                     Intent intent = new Intent(Compra.this, FinalizarCompra.class);
                     intent.putExtra("nome", nomeDoProduto);
-                    intent.putExtra("valor", valorDoProduto);
+                    intent.putExtra("valor", price);
                     intent.putExtra("id", id);
                     intent.putExtra("urlImage",imageurl);
 
                     startActivity(intent);
 
-                    Toast.makeText(Compra.this, nomeDoProduto + ": " + valorDoProduto, Toast.LENGTH_LONG).show();
+                    Toast.makeText(Compra.this, nomeDoProduto + ": " + price, Toast.LENGTH_LONG).show();
                 }
             });
         }
 
         public void bind(Produto produto){
-            name.setText(produto.getName());
-            price.setText("R$: " + produto.getPrice());
-            stock.setText(produto.getStock());
             id = produto.getId();
+            price = produto.getPrice();
+            nameTxt.setText(produto.getName());
+            priceTxt.setText("R$: " + price);
+            stockTxt.setText(produto.getStock());
 
             //image config
             imageurl = produto.getImage_url();
-            System.out.println(imageurl);
 
             new DownloadImageTask((ImageView) image)
                     .execute(imageurl);

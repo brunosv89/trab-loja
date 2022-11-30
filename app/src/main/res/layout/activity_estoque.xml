@@ -99,17 +99,39 @@
             android:layout_marginBottom="10dp"/>
 
 
-        <Button
-            android:id="@+id/btnNovoProduto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cadastrar novo produto"
-            android:textSize="18dp"
-            android:width="320dp"
-            android:layout_marginTop="15dp"
-            android:backgroundTint="#B9C1D3"
-            android:layout_gravity="center"
-            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnNovoProduto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cadastrar novo produto"
+                android:textSize="18dp"
+                android:width="250dp"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="#B9C1D3"
+                android:layout_gravity="center"
+                />
+
+            <Button
+                android:id="@+id/btnResetar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="Resetar ganhos totais"
+                android:width="250dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="#B9C1D3"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+
+
+
 
 
 

@@ -25,9 +25,15 @@ import com.example.trab_e_commerce.model.Produto;
 import com.example.trab_e_commerce.utils.DownloadImageTask;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class Estoque extends AppCompatActivity {
@@ -37,7 +43,7 @@ public class Estoque extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirestoreRecyclerAdapter adapter;
     TextView txtTotalVendas;
-    Button btnNovoProduto;
+    Button btnNovoProduto, btnResetarVendas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +53,10 @@ public class Estoque extends AppCompatActivity {
         setupWidgets();
         setupButtons();
         loadProductList();
-
+        loadTotalSales();
     }
+
+
 
     private void loadProductList() {
         Query query = db
@@ -92,11 +100,70 @@ public class Estoque extends AppCompatActivity {
 
     private void setupButtons() {
         btnNovoProduto = findViewById(R.id.btnNovoProduto);
+        btnResetarVendas = findViewById(R.id.btnResetar);
         btnNovoProduto.setOnClickListener(view -> {
             Intent intent = new Intent(Estoque.this, CadastroProduto.class);
             startActivity(intent);
         });
+
+
+        btnResetarVendas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                JSONObject jsonBody = new JSONObject();
+                try {
+                    jsonBody.put("total_sale", "0");
+                    String URL = "https://us-central1-trabalho-ecommerce.cloudfunctions.net/api/updateTotalSale";
+                    ApiCall.post(URL,jsonBody,getApplicationContext());
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "Erro de API",
+                            Toast.LENGTH_SHORT).show();
+                }finally {
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    loadTotalSales();
+                    Toast.makeText(getApplicationContext(), "Ganhos com venda zerados",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
+
+
+
+    private void loadTotalSales() {
+        String adminId = "bvWRQTNe1WZsGpLEc2jPpZhuaQA2";
+        DocumentReference adminRef = db.collection("user").document(adminId);
+
+
+        adminRef.get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            String totalSale = documentSnapshot.getString("total_sale");
+                            txtTotalVendas.setText("R$ "+totalSale.toString());
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(Estoque.this, "Erro de API", Toast.LENGTH_SHORT).show();
+                        txtTotalVendas.setText("R$ 100");
+                    }
+                });
+    }
+
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -112,6 +179,7 @@ public class Estoque extends AppCompatActivity {
             case R.id.itemHome:
                 Intent homePage = new Intent(Estoque.this, MainActivity.class);
                 startActivity(homePage);
+
                 return true;
         }
         return false;
