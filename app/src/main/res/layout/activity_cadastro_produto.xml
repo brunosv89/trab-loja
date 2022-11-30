@@ -103,6 +103,29 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="60dp"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="URL:"
+                android:textSize="15dp"
+                android:layout_marginBottom="10dp"/>
+
+            <EditText
+                android:id="@+id/url"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:background="#fff"/>
+
+        </LinearLayout>
+
 
         <Button
             android:id="@+id/btnNovoProduto"
