@@ -9,6 +9,7 @@
     android:layout_marginTop="8dp"
     app:cardBackgroundColor="#FFFFEF">
 
+<<<<<<< HEAD
 
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -19,6 +20,15 @@
     android:orientation="horizontal"
     android:paddingHorizontal="5dp"
     android:paddingVertical="2dp">
+=======
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+
+
+>>>>>>> a30de85613a7b27b26bd4fa2f06a9c3d77bb7bec
 
     <ImageView
         android:id="@+id/img"
@@ -53,6 +63,13 @@
         android:layout_weight="3"
         android:gravity="center"
         android:text="Valor" />
+<<<<<<< HEAD
+=======
+
+
+
+    </RelativeLayout>
+>>>>>>> a30de85613a7b27b26bd4fa2f06a9c3d77bb7bec
 
 
 </LinearLayout>
