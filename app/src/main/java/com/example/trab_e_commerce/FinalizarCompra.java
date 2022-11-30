@@ -108,6 +108,7 @@ public class FinalizarCompra extends AppCompatActivity {
             case R.id.itemHome:
                 Intent homePage = new Intent(FinalizarCompra.this, MainActivity.class);
                 startActivity(homePage);
+                finish();
                 return true;
         }
         return false;

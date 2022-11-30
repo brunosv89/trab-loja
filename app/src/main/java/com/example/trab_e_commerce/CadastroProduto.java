@@ -84,6 +84,7 @@ public class CadastroProduto extends AppCompatActivity {
             case R.id.itemHome:
                 Intent homePage = new Intent(CadastroProduto.this, MainActivity.class);
                 startActivity(homePage);
+                finish();
                 return true;
         }
         return false;

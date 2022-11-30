@@ -179,7 +179,7 @@ public class Estoque extends AppCompatActivity {
             case R.id.itemHome:
                 Intent homePage = new Intent(Estoque.this, MainActivity.class);
                 startActivity(homePage);
-
+                finish();
                 return true;
         }
         return false;

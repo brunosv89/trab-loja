@@ -40,10 +40,11 @@
             android:paddingVertical="2dp"
             android:layout_gravity="center"
             android:layout_marginHorizontal="20dp"
-            android:background="#D2B4DE">
+            android:background="@drawable/rounded_border"
+            >
 
             <TextView
-                android:layout_width="60dp"
+                android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
@@ -52,43 +53,46 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="4"
+                android:layout_weight="6"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
-                android:text="Produto" />
+                android:text="Produto"
+                android:textColor="#fff"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Estoque" />
+                android:text="Estoque"
+                android:textColor="#fff"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="5"
                 android:gravity="center"
-                android:text="Valor" />
+                android:text="Valor"
+                android:textColor="#fff"/>
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listaProdutos"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="350dp"
             android:layout_gravity="center"
             android:layout_marginHorizontal="20dp"
             android:background="#E0FFFF"/>
 
-        <Button
-            android:id="@+id/btnComp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Comprar"
-            android:width="150dp"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="#B9C1D3"
-            android:layout_gravity="center" />
+<!--        <Button-->
+<!--            android:id="@+id/btnComp"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Comprar"-->
+<!--            android:width="150dp"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            android:backgroundTint="#B9C1D3"-->
+<!--            android:layout_gravity="center" />-->
 
 
     </LinearLayout>

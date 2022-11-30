@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity  {
             case R.id.itemHome:
                 Intent homePage = new Intent(MainActivity.this, MainActivity.class);
                 startActivity(homePage);
+                finish();
                 return true;
         }
         return false;

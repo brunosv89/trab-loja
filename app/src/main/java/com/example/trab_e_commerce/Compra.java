@@ -52,13 +52,13 @@ public class Compra extends AppCompatActivity {
         recyclerView = findViewById(R.id.listaProdutos);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        btnComprar = findViewById(R.id.btnComp);
-        btnComprar.setOnClickListener(view -> {
-            Intent intent = new Intent(Compra.this, FinalizarCompra.class);
-            intent.putExtra("nome", "Teclado Hello Kit");
-            intent.putExtra("valor", "R$ 39.90");
-            startActivity(intent);
-        });
+//        btnComprar = findViewById(R.id.btnComp);
+//        btnComprar.setOnClickListener(view -> {
+//            Intent intent = new Intent(Compra.this, FinalizarCompra.class);
+//            intent.putExtra("nome", "Teclado Hello Kit");
+//            intent.putExtra("valor", "R$ 39.90");
+//            startActivity(intent);
+//        });
 
 
 
@@ -139,7 +139,7 @@ public class Compra extends AppCompatActivity {
 
                     startActivity(intent);
 
-                    Toast.makeText(Compra.this, nomeDoProduto + ": " + price, Toast.LENGTH_LONG).show();
+                    //Toast.makeText(Compra.this, nomeDoProduto + ": " + price, Toast.LENGTH_LONG).show();
                 }
             });
         }
@@ -174,6 +174,7 @@ public class Compra extends AppCompatActivity {
             case R.id.itemHome:
                 Intent homePage = new Intent(Compra.this, MainActivity.class);
                 startActivity(homePage);
+                finish();
                 return true;
         }
         return false;
