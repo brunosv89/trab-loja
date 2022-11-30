@@ -7,7 +7,7 @@
     tools:context=".Compra"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#AED6F1">
+    android:background="@drawable/page_gradient"    >
 
 
     <LinearLayout
@@ -87,7 +87,7 @@
             android:text="Comprar"
             android:width="150dp"
             android:layout_marginTop="30dp"
-            android:backgroundTint="#D2B4DE"
+            android:backgroundTint="#B9C1D3"
             android:layout_gravity="center" />
 
 

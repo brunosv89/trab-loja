@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".FinalizarCompra"
     android:gravity="center"
-    android:background="#AED6F1">
+    android:background="@drawable/page_gradient">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -75,7 +75,7 @@
             android:text="Finalizar Compra"
             android:width="200dp"
             android:layout_marginTop="30dp"
-            android:backgroundTint="#D2B4DE"
+            android:backgroundTint="#B9C1D3"
             android:layout_gravity="center" />
 
 
