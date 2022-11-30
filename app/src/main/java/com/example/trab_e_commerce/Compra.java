@@ -12,28 +12,19 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.trab_e_commerce.model.Produto;
+import com.example.trab_e_commerce.utils.DownloadImageTask;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.SimpleTimeZone;
 
 public class Compra extends AppCompatActivity {
 
@@ -123,13 +114,14 @@ public class Compra extends AppCompatActivity {
         TextView name;
         TextView price;
         TextView stock;
+        ImageView image;
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
             name = itemView.findViewById(R.id.produtoNome);
             price = itemView.findViewById(R.id.produtoValor);
             stock = itemView.findViewById(R.id.produtoEstoque);
-
+            image = itemView.findViewById(R.id.img);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -145,6 +137,14 @@ public class Compra extends AppCompatActivity {
             name.setText(produto.getName());
             price.setText("R$: " + produto.getPrice());
             stock.setText(produto.getStock());
+
+            //image config
+            String imageurl = produto.getImage_url();
+            System.out.println(imageurl);
+
+            new DownloadImageTask((ImageView) image)
+                    .execute(imageurl);
+
         }
 
 
